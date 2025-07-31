@@ -1,1 +1,0 @@
-score_text.get_width()
