@@ -1,5 +1,6 @@
 import pygame
 
+# This class comes from chatGPT. It's a basic timer class that allowed you to start stop loop and restart. Its very useful!
 class Timer:
     def __init__(self, duration):
         """
