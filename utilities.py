@@ -76,7 +76,6 @@ class Slider:
     def draw(self, screen, pos):
         """Draws the slider to the screen"""
 
-
         pygame.draw.rect(self.surface, self.bgColor.colorize(), self.rect)
 
         pygame.draw.circle(self.surface, self.nobColor.colorize(), (pos[0], self.rect.height/2), self.size.y/2)

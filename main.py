@@ -4,7 +4,6 @@ from utilities import Button, Slider
 from color import Color
 from pygame import Vector2 as vec2
 from timer import Timer
-from time import sleep
 
 pygame.font.init()
 pygame.mixer.init()
@@ -23,7 +22,6 @@ FALLING_SPEED = 250
 
 class Game:
     def __init__(self, size):
-        
         # Initializes the screen and clock and other necessary values
         self.screen = pygame.display.set_mode(size)
         self.clock = pygame.time.Clock()
@@ -34,7 +32,7 @@ class Game:
         self.style = 4
         self.current_falling_speed = FALLING_SPEED
 
-        self.screen_state = '3'
+        self.screen_state = '0'
         self.game_started = False
         self.paused = False
         
@@ -155,7 +153,7 @@ class Game:
         
     def calculate_falling_speed(self, score):
         """Calculates the falling speed of a shape based on their score, fastest speed is 25ms between attempts at movement down"""
-        delay = 250 - (score / 15)
+        delay = 250 - (score / 20)
         return max(delay, 25)
 
     def check_line_and_clear(self):
