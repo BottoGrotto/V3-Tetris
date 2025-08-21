@@ -13,16 +13,19 @@ class ShapeSpawner:
         self.generate_bag()
 
     def random_shape(self):
-        """Chooses a random shape to spawn"""
+        """Chooses a random shape to spawn from the options list.
+        \nDeprecated: Use pull_randomly_from_bag instead for balancing purposes."""
         return self.options[random.randint(0, len(self.options) - 1)]()
     
     def generate_bag(self):
+        """Generates a bag of shapes so that each shape is guaranteed to be spawned once before any shape is repeated."""
         list_to_shuffle = self.options.copy()
         random.shuffle(list_to_shuffle)
         for i in range(0, len(list_to_shuffle)):
             self.bag.append(list_to_shuffle[i])
-        
+    
     def pull_randomly_from_bag(self):
+        """Pulls a random shape from the bag and returns it. If the bag is empty, it generates a new bag."""
         choice = random.randint(0, len(self.bag)-1)
 
         shape = self.bag.pop(choice)()

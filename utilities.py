@@ -65,8 +65,7 @@ class Slider:
 
         self.collisionRect = pygame.Rect(self.render_pos.x, self.render_pos.y, size.x, size.y)
         
-        
-
+        # Initializes the min, value, and max values for the slider
         self.minValue = minValue
         self.value = value
         self.maxValue = maxValue + 1

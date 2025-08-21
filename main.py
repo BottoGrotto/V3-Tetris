@@ -127,8 +127,7 @@ class Game:
             for j in range(len(self.grid[i]) - 1, self.col, -1):
                 pygame.draw.rect(self.screen, (25, 25, 25), ((j * BOX_SIZE, i * BOX_SIZE), (BOX_SIZE, BOX_SIZE)), width=self.style, border_radius=5)
                 pygame.draw.rect(self.screen, (60, 60, 60), ((j * BOX_SIZE + self.style, i * BOX_SIZE + self.style), (BOX_SIZE-self.style, BOX_SIZE-self.style)), border_radius=5)
-                # pygame.time.wait(50)
-        # pygame.time.wait(1000)
+
         if self.row > -1 and self.col > -1:
             if self.next_block_speed.has_expired():
                 self.row -= 2
@@ -419,21 +418,10 @@ class Game:
                     self.draw_boxes()
                     self.draw_score()
                 if not self.draw_fail_transition_forward():
-                # if self.row >= len(self.grid):
                     if not self.wait_timer.is_running():
                         self.wait_timer.start()
                     elif self.wait_timer.has_expired():
                         self.screen_state = '3'
-                    
-                    # if self.started_backwards:
-                    #     self.screen_state == '3'
-                
-                    
-                # self.draw_boxes()
-                # self.draw_score()
-                # Draws the shape to the grid
-                # for shape in self.shapes:
-                #     shape.draw(self.grid)
 
             # Game over state
             if self.screen_state == '3':
@@ -484,7 +472,7 @@ class Game:
                             # Only clears the grid if you are starting a new gamee
                             if not self.paused:
                                 self.grid = self.make_grid()
-                            self.score = 0
+                                self.score = 0
  
                     # This is for adjusting how large the show padding is on the boxes (Has no effect on actual gameplay)
                     if event.key == pygame.K_i and self.screen_state == '1':

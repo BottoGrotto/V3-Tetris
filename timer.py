@@ -1,59 +1,44 @@
 import pygame
 
-# This class comes from chatGPT. It's a basic timer class that allowed you to start stop loop and restart. Its very useful!
 class Timer:
     def __init__(self, duration):
-        """
-        Initialize the timer.
-
-        :param duration: Timer duration in milliseconds.
-        """
         self.duration = duration
         self.start_time = None
         self.running = False
         self.loop = False
 
     def restart(self):
+        """Restarts the timer"""
         self.stop()
         self.start(self.loop)
 
     def start(self, loop=False):
-        """
-        Start the timer.
-
-        :param loop: If True, the timer will restart automatically when it expires.
-        """
+        """Starts the timer"""
         self.start_time = pygame.time.get_ticks()
         self.running = True
         self.loop = loop
 
     def stop(self):
-        """Stop the timer."""
+        """Stops the timer"""
         self.start_time = None
         self.running = False
         self.loop = False
 
     def is_running(self):
-        """
-        Check if the timer is running.
-
-        :return: True if the timer is running, otherwise False.
-        """
+        """Returns the state of the timer"""
         return self.running
 
     def has_expired(self):
-        """
-        Check if the timer has expired.
-
-        :return: True if the timer has expired, otherwise False.
-        """
+        """Checks if the timer has expired and restarts it if it is set to loop"""
         if not self.running:
             return False
 
+        # Gets the time since the timer started
         elapsed_time = pygame.time.get_ticks() - self.start_time
+        # Checks if the elapsed time is >= to the set duration then loops or stops the timer
         if elapsed_time >= self.duration:
             if self.loop:
-                self.start_time = pygame.time.get_ticks()  # Restart the timer
+                self.start_time = pygame.time.get_ticks()
             else:
                 self.stop()
             return True
